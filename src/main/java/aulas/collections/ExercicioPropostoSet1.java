@@ -13,6 +13,7 @@ public class ExercicioPropostoSet1 {
             add(new ArcoIris("Indigo"));
             add(new ArcoIris("Violeta"));
         }};
+
         System.out.println("*** Exiba todas as cores uma abaixo da outra: ");
         for(ArcoIris arcoIris : meuArcoIris){
             System.out.println(arcoIris.getNome());
@@ -39,15 +40,19 @@ public class ExercicioPropostoSet1 {
 
         Iterator<ArcoIris> iterator = listaOrdemAlfabetica.iterator();
         while(iterator.hasNext()){
+
             ArcoIris next = iterator.next();
+
             if(!next.getNome().startsWith("v") && !next.getNome().startsWith("V")){
                 iterator.remove();
             }
         }
         System.out.println("Exiba todas as cores que iniciam com a letra V e remove as cores que não iniciam com v");
+
         for(ArcoIris arcoIris : listaOrdemAlfabetica){
             System.out.println(arcoIris.getNome());
         }
+
         System.out.println("*** Apague todo o conjunto: ");
         meuArcoIris.clear();
         System.out.println("*** Confira se o conjunto está vazio: " + meuArcoIris.isEmpty());
