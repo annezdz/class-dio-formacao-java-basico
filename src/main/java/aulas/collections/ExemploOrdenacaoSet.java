@@ -29,7 +29,7 @@ public class ExemploOrdenacaoSet {
         for(Serie serie: minhasSeriesLinked){
             System.out.println(serie.getNome() +" - " + serie.getGenero() + " - " + serie.getTempoEpisodio());
         }
-        System.out.println("*** Ordem natural (tempo episodio) TreeSet");
+        System.out.println("*** Ordem natural TreeSet");
         Set<Serie> minhasSeriesTreeSet = new TreeSet<>(minhasSeriesLinked);
         System.out.println(minhasSeriesTreeSet);
 
@@ -41,7 +41,20 @@ public class ExemploOrdenacaoSet {
                 serie.getTempoEpisodio());
 
         System.out.println();
-        System.out.println("*** Ordenar por genero");
+        System.out.println("*** Ordenar por genero *****");
+        Set<Serie> listaOrdenadaGenero = new TreeSet<>(new ComparatorGenero());
+        listaOrdenadaGenero.addAll(minhasSeries);
+        for(Serie serie : listaOrdenadaGenero) System.out.println(serie.getNome() +" - " + serie.getGenero() + " - " +
+                serie.getTempoEpisodio());
+
+
+        System.out.println();
+        System.out.println("*** Ordenar por Tempo de Episodio ****");
+        Set<Serie> listaOrdenadaTempo = new TreeSet<>(new ComparatorDuracao());
+        listaOrdenadaTempo.addAll(listaOrdenadaGenero);
+        for(Serie serie : listaOrdenadaTempo) System.out.println(serie.getNome() +" - " + serie.getGenero() + " - " +
+                serie.getTempoEpisodio());
+
     }
 }
 class Serie implements Comparable<Serie>{
@@ -104,6 +117,26 @@ class ComparatorNomeGeneroEpisodio implements Comparator<Serie>{
         if(nome != 0) return nome;
         int genero = o1.getGenero().compareTo(o2.getGenero());
         if(genero != 0) return genero;
+        return Integer.compare(o1.getTempoEpisodio(),o2.getTempoEpisodio());
+    }
+}
+
+class ComparatorGenero implements Comparator<Serie>{
+
+    @Override
+    public int compare(Serie o1, Serie o2) {
+        int tempo =  o1.getGenero().compareToIgnoreCase(o2.getGenero());
+        if(tempo != 0) return tempo;
+        int nome = o1.getNome().compareTo(o2.getNome());
+        if(nome != 0) return nome;
+        return o1.getGenero().compareToIgnoreCase(o2.getGenero());
+    }
+}
+
+class ComparatorDuracao implements Comparator<Serie>{
+
+    @Override
+    public int compare(Serie o1, Serie o2) {
         return Integer.compare(o1.getTempoEpisodio(),o2.getTempoEpisodio());
     }
 }
