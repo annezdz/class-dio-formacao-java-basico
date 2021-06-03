@@ -30,7 +30,12 @@ public class ExercicioSetDIOOrdenacao {
             System.out.println(linguagens);
         }
         System.out.println();
-        System.out.println("");
+        System.out.println("*** Ordena por IDE *** ");
+        Set<Linguagens> ordenaPorIde = new TreeSet<>(new ComparatorIde());
+        ordenaPorIde.addAll(minhasLinguagens);
+        for(Linguagens linguagens : ordenaPorIde){
+            System.out.println(linguagens);
+        }
 
     }
 }
@@ -83,5 +88,13 @@ class Linguagens implements Comparable<Linguagens> {
     @Override
     public int compareTo(Linguagens o) {
         return this.getNome().compareTo(o.getNome());
+    }
+}
+
+class ComparatorIde implements Comparator<Linguagens>{
+
+    @Override
+    public int compare(Linguagens o1, Linguagens o2) {
+        return o1.getIde().compareToIgnoreCase(o2.getIde());
     }
 }

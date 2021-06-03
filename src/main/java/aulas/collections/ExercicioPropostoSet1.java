@@ -96,3 +96,4 @@ class ArcoIris implements Comparable<ArcoIris>{
         return Objects.hash(nome);
     }
 }
+
