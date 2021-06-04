@@ -37,6 +37,14 @@ public class ExercicioSetDIOOrdenacao {
             System.out.println(linguagens);
         }
 
+        System.out.println();
+        System.out.println("*** Ordena por ano de criação e nome ***");
+        Set<Linguagens> ordenaPorAnoENome = new TreeSet<>(new ComparatorAnoNome());
+        ordenaPorAnoENome.addAll(minhasLinguagens);
+        for(Linguagens linguagens : ordenaPorAnoENome){
+            System.out.println(linguagens);
+        }
+
     }
 }
 class Linguagens implements Comparable<Linguagens> {
@@ -96,5 +104,15 @@ class ComparatorIde implements Comparator<Linguagens>{
     @Override
     public int compare(Linguagens o1, Linguagens o2) {
         return o1.getIde().compareToIgnoreCase(o2.getIde());
+    }
+}
+
+class ComparatorAnoNome implements Comparator<Linguagens>{
+
+    @Override
+    public int compare(Linguagens o1, Linguagens o2) {
+        int ano = Integer.compare(o1.getAno(),o2.getAno());
+        if(ano != 0 )return ano;
+        return o1.getNome().compareToIgnoreCase(o2.getNome());
     }
 }
