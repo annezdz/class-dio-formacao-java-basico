@@ -1,8 +1,6 @@
 package aulas.collections;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 public class ExerciseMap1Population {
     public static void main(String[] args) {
@@ -57,6 +55,33 @@ public class ExerciseMap1Population {
         System.out.println(listadosPorInsercao.toString());
         System.out.println();
         System.out.println("*** Exiba os estados e suas populacoes em ordem alfabetica *** ");
+        Map<String, Double> listadoPorOrdemAlfabetica = new TreeMap<>(listadosPorInsercao);
+        System.out.println(listadoPorOrdemAlfabetica.toString());
+        System.out.println();
+        System.out.println("*** Exiba o estado com a menor populacao e sua quantidade *** ");
+        Double menosPopuloso = Collections.min(estadosPopulacao.values());
+        Set<Map.Entry<String, Double>> entries = estadosPopulacao.entrySet();
+        String estadoMenosPopuloso = "";
+
+        for(Map.Entry<String, Double> entry : entries){
+            if(entry.getValue().equals(menosPopuloso)){
+                estadoMenosPopuloso = entry.getKey();
+                System.out.println("Estado menos populoso: " + estadoMenosPopuloso + " - " + menosPopuloso);
+            }
+        }
+        System.out.println();
+        System.out.println("*** Exiba o estado com a maior populacao e sua quantidade *** ");
+        Double maisPopuloso = Collections.max(estadosPopulacao.values());
+        String estadoMaisPopuloso = "";
+
+        for(Map.Entry<String, Double> entry: entries){
+            if(entry.getValue().equals(maisPopuloso)){
+                estadoMaisPopuloso = entry.getKey();
+                System.out.println("Estado mais populoso: " + estadoMaisPopuloso + " - " + maisPopuloso);
+            }
+        }
+        System.out.println();
+        System.out.println();
 
 
     }
