@@ -81,7 +81,30 @@ public class ExerciseMap1Population {
             }
         }
         System.out.println();
+        Double soma = 0d;
+        Iterator<Double> iterator = estadosPopulacao.values().iterator();
+        while(iterator.hasNext()){
+            Double next = iterator.next();
+            soma+=next;
+        }
+        System.out.println(" *** Exiba a soma da populacao desses estados *** " + Math.round(soma));
         System.out.println();
+        System.out.println(" *** Exiba a media da populacao desse dicionario *** "
+                + Math.round(soma/estadosPopulacao.size()));
+        System.out.println();
+        Iterator<Double> it = estadosPopulacao.values().iterator();
+        while (it.hasNext()){
+            Double next = it.next();
+            if(next < 4000.000){
+                it.remove();
+            }
+        }
+        System.out.println("*** Remova os estados com populacao menor que 4.000.000 ***");
+        System.out.println(estadosPopulacao.toString());
+        System.out.println();
+        System.out.println("*** Apague o dicionario e verifique se esta vazio ***");
+        estadosPopulacao.clear();
+        System.out.println(estadoMaisPopuloso.isEmpty());
 
 
     }
