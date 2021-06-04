@@ -104,7 +104,12 @@ public class ExerciciosStreamAPI {
 
         System.out.println("Ignore os 3 primeiros elementos da lista e imprima o restante");
         List<Integer> sublista = lista.subList(3,lista.size());
-        System.out.println(sublista);
+        //System.out.println(sublista);
+
+        List<Integer> listaSemRepetidos = sublista.stream().distinct().collect(Collectors.toList());
+        System.out.println("Retirando os numeros repetidos da lista.");
+        System.out.println(listaSemRepetidos);
+
 
     }
 }
