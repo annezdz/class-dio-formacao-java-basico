@@ -10,6 +10,9 @@ public class ExercicioSetDIOOrdenacao {
             add(new Linguagens("Java",1995,"Intellij"));
             add(new Linguagens("C#",2000,"Rider"));
             add(new Linguagens("Python",1989,"PyCharm"));
+            add(new Linguagens("Kotlin",2017,"Intellij/Android"));
+            add(new Linguagens("Go",2009,"GoLand/Android"));
+
         }};
         for(Linguagens linguagens : minhasLinguagens){
             System.out.println(linguagens.getNome() + " - " + linguagens.getAno() + " - " + linguagens.getIde());
@@ -24,6 +27,7 @@ public class ExercicioSetDIOOrdenacao {
             System.out.println(linguagens.getNome() + " - " + linguagens.getAno() + " - " + linguagens.getIde());
         }
 
+        System.out.println();
         System.out.println("*** Ordem natural ***");
         Set<Linguagens> listaOrdemNatural = new TreeSet<>(ordemInsercao);
         for(Linguagens linguagens : listaOrdemNatural){
@@ -44,9 +48,16 @@ public class ExercicioSetDIOOrdenacao {
         for(Linguagens linguagens : ordenaPorAnoENome){
             System.out.println(linguagens);
         }
-
+        System.out.println();
+        System.out.println("*** Ordena por nome, ano de criação e IDE");
+        Set<Linguagens> ordenaPorNomeAnoIde = new TreeSet<>(new ComparatorNomeAnoIde());
+        ordenaPorNomeAnoIde.addAll(minhasLinguagens);
+        for(Linguagens linguagens : ordenaPorNomeAnoIde){
+            System.out.println(linguagens);
+        }
     }
 }
+
 class Linguagens implements Comparable<Linguagens> {
 
     private String nome;
@@ -114,5 +125,17 @@ class ComparatorAnoNome implements Comparator<Linguagens>{
         int ano = Integer.compare(o1.getAno(),o2.getAno());
         if(ano != 0 )return ano;
         return o1.getNome().compareToIgnoreCase(o2.getNome());
+    }
+}
+
+class ComparatorNomeAnoIde implements Comparator<Linguagens>{
+
+    @Override
+    public int compare(Linguagens o1, Linguagens o2) {
+        int nome = o1.getNome().compareTo(o2.getNome());
+        if(nome !=0 ) return nome;
+        int ano = Integer.compare(o1.getAno(),o2.getAno());
+        if(ano != 0) return ano;
+        return o1.getIde().compareTo(o2.getIde());
     }
 }
