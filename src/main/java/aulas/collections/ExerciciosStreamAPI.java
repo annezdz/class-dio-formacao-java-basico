@@ -99,9 +99,12 @@ public class ExerciciosStreamAPI {
 //            }
 //        });
 
-        lista.removeIf(in -> in % 2 == 1);
+//        lista.removeIf(in -> in % 2 == 1);
+//        System.out.println(lista);
 
-        System.out.println(lista);
+        System.out.println("Ignore os 3 primeiros elementos da lista e imprima o restante");
+        List<Integer> sublista = lista.subList(3,lista.size());
+        System.out.println(sublista);
 
     }
 }
