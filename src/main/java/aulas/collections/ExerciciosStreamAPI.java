@@ -1,11 +1,9 @@
 package aulas.collections;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.function.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ExerciciosStreamAPI {
     public static void main(String[] args) {
@@ -114,7 +112,7 @@ public class ExerciciosStreamAPI {
 //        System.out.println();
 //        System.out.println("Mostrar o maior valor da lista  " + Collections.max(lista));
 //        System.out.println("Mostrar o menor valor da lista  " + Collections.min(lista));
-//        lista.removeIf(in -> in % 2 != 1);
+          //lista.removeIf(in -> in % 2 != 1);
 //        Integer total = lista.stream().mapToInt(Integer::intValue).sum();
 //        System.out.println("Excluir os numeros impares e soma-los: "+ total);
 //        System.out.println();
@@ -122,7 +120,9 @@ public class ExerciciosStreamAPI {
 //        System.out.println(lista.stream().sorted().collect(Collectors.toList()));
 
         System.out.println("Agrupar os numeros impares e multiplos de 3 e 5 -- ");
-
-
+        //String multiplos = lista.stream().filter(value -> (value % 3 == 0 || value % 5 == 0)).toString();
+        System.out.println(lista.stream()
+                .distinct()
+                .collect(Collectors.groupingBy(p -> p % 3 == 0 || p % 5 == 0)));
     }
 }
