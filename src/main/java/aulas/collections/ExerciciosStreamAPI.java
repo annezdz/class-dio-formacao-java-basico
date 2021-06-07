@@ -1,6 +1,7 @@
 package aulas.collections;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.function.*;
@@ -102,13 +103,25 @@ public class ExerciciosStreamAPI {
 //        lista.removeIf(in -> in % 2 == 1);
 //        System.out.println(lista);
 
-        System.out.println("Ignore os 3 primeiros elementos da lista e imprima o restante");
-        List<Integer> sublista = lista.subList(3,lista.size());
-        //System.out.println(sublista);
+//        System.out.println("Ignore os 3 primeiros elementos da lista e imprima o restante");
+//        List<Integer> sublista = lista.subList(3,lista.size());
+//        //System.out.println(sublista);
+//
+//        List<Integer> listaSemRepetidos = sublista.stream().distinct().collect(Collectors.toList());
+//        System.out.println("Retirando os numeros repetidos da lista.");
+//        System.out.println(listaSemRepetidos);
 
-        List<Integer> listaSemRepetidos = sublista.stream().distinct().collect(Collectors.toList());
-        System.out.println("Retirando os numeros repetidos da lista.");
-        System.out.println(listaSemRepetidos);
+//        System.out.println();
+//        System.out.println("Mostrar o maior valor da lista  " + Collections.max(lista));
+//        System.out.println("Mostrar o menor valor da lista  " + Collections.min(lista));
+//        lista.removeIf(in -> in % 2 != 1);
+//        Integer total = lista.stream().mapToInt(Integer::intValue).sum();
+//        System.out.println("Excluir os numeros impares e soma-los: "+ total);
+//        System.out.println();
+//        System.out.println("Mostre a lista na ordem numerica: ");
+//        System.out.println(lista.stream().sorted().collect(Collectors.toList()));
+
+        System.out.println("Agrupar os numeros impares e multiplos de 3 e 5 -- ");
 
 
     }
